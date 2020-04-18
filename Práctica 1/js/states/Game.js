@@ -18,7 +18,8 @@ Game.prototype = {
         this.floor.body.collideWorldBounds = false;
         this.floor.body.allowGravity = false;
         this.floor.body.immovable = true;
-        this.floor.body.setSize(this.floor.sprite.width, this.floor.sprite.height,this.floor.sprite.width, this.floor.sprite.height);
+        this.floor.body.offset.y = 85;
+        //this.floor.body.setSize(this.floor.sprite.width, this.floor.sprite.height,this.floor.sprite.width, this.floor.sprite.height);
 
         this.scoreBG = this.add.sprite(0,0,"scoreBG");
 
