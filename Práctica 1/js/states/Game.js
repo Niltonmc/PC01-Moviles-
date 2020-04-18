@@ -8,7 +8,7 @@ Game.prototype = {
         this.physics.startSystem(Phaser.Physics.ARCADE);
 
         //LA FÍSICA ESTÁ EN PIXELES
-        this.physics.arcade.gravity.y = 500;
+        this.physics.arcade.gravity.y = 10;
 
         this.background = this.add.sprite(0,0,"background")
 
@@ -26,7 +26,7 @@ Game.prototype = {
         this.player = this.game.add.sprite(0,0,"player");
         this.player.anchor.setTo(0.5);
         this.player.x = this.game.world.centerX;
-        this.player.y = this.game.world.centerY;
+        this.player.y = this.game.world.centerY + 320;
         this.player.animations.add("idle", [0,1,2,3,4,5,6,7,8,9,10,11,12], 10, true);
         this.physics.arcade.enable(this.player);
         //el orden es importante
@@ -126,16 +126,20 @@ Game.prototype = {
     },
 
     SetScore:function(sprite1,sprite2){
-        sprite2.kill();
-        if((sprite2.typeCandy == 1 || sprite2.typeCandy == 3) && this.score%2 == 0){
+       
+        if((sprite2.typeCandy == 1 || sprite2.typeCandy == 3) && this.score %2 == 0){
             this.score = this.score * 2
-        }else if((sprite2.typeCandy == 1 || sprite2.typeCandy == 3) && this.score%2 != 0){
+        }else if((sprite2.typeCandy == 1 || sprite2.typeCandy == 3) && this.score %2 != 0){
         this.score = this.score + 5
         }else if(sprite2.typeCandy == 2){
             this.score = this.score + 10
         }else if(sprite2.typeCandy == 4){
                 this.score = this.score + 50
         }
+        else if(sprite2.typeCandy == 0){
+            this.score = this.score + 20
+    }
+    sprite2.kill();
         console.log(this.score);
     },
 
